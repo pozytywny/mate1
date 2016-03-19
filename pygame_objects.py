@@ -178,7 +178,7 @@ class QuizCarrousel(pygame.sprite.Group):
             self.selected.selected = True
 
 
-    def mouseclick(self, pos, action='kill'):
+    def mouseclick(self, pos):
         x, y = pos
         rect = self.selected.rect
         for w in self.sprites():
