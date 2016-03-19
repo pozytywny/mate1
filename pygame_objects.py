@@ -178,6 +178,14 @@ class QuizCarrousel(pygame.sprite.Group):
             self.selected.selected = True
 
 
+    def mouseclick(self, pos):
+        x, y = pos
+        rect = self.selected.rect
+        for w in self.sprites():
+            if w.rect.left < x < w.rect.right and w.rect.top < y < w.rect.bottom:
+                w.kill(True)
+
+
     def add_random(self, direction=None):
         direction = direction or random.choice([LEFT, RIGHT])
         text, image, sound =  random.choice(self.game.assets)

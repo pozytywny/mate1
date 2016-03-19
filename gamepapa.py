@@ -87,7 +87,9 @@ class Game():
                     screen.blit(pygame.transform.scale(pic,event.dict['size']),(0,0))
                     pygame.display.flip()
 
-            #self.score_widget.update()
+                elif event.type==MOUSEBUTTONDOWN and event.button == 1:
+                    self.quiz_carrousel.mouseclick(event.pos)
+
             self.score_widget.draw()
             dirty = self.quiz_carrousel.step(key)
             #self.screen.blit(self.score_widget, (0,0))
