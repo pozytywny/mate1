@@ -5,7 +5,7 @@ from collections import namedtuple
 
 import pygame
 from pygame.locals import *
-from settings import settings, resource
+from settings import settings, resource, asset
 from pygame_objects import (ScoreWidget, QuizCarrousel, LEFT, RIGHT,
                             EVENTID_KILLQUIZ, EVENTID_PUSHQUIZ)
 from logging import Logger
@@ -38,18 +38,15 @@ class Game():
     def read_assets(self):
 
         def load_gfx(path):
-            return pygame.image.load(self.asset(path)).convert()
+            return pygame.image.load(asset(path)).convert()
         def load_sfx(path):
-            return pygame.mixer.Sound(self.asset(path))
+            return pygame.mixer.Sound(asset(path))
 
 
-        with open(self.asset('assets.csv')) as file:
+        with open(asset('assets.csv')) as file:
             reader = csv.reader(file, delimiter=',')
             return [AssetsEntry(text, load_gfx(image), load_sfx(sound))
                     for [text, image, sound] in reader]
-
-    def asset(self, name):
-        return os.path.join('assets', name)
 
     def lost(self):
         pass

@@ -2,10 +2,16 @@ from ConfigParser import ConfigParser, NoOptionError
 import pygame
 import os
 
-RES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RESOURCE_DIR = os.path.join(BASE_DIR, 'resources')
+ASSET_DIR = os.path.join(BASE_DIR, 'assets')
 
 def resource(name):
-    return os.path.join(RES_DIR, name)
+    return os.path.join(RESOURCE_DIR, name)
+
+
+def asset(name):
+    return os.path.join(ASSET_DIR, name)
 
 
 class GameConfig():
