@@ -1,10 +1,16 @@
 from ConfigParser import ConfigParser, NoOptionError
 import pygame
+import os
+
+RES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resources')
+
+def resource(name):
+    return os.path.join(RES_DIR, name)
 
 
 class GameConfig():
     _defaults = {
-        "font_path": "resources/ubuntu.ttf",
+        "font_path": resource("ubuntu.ttf"),
         "resolution": (800, 600),
         "font_size": 26,
         "color_normal": (100, 100, 100),

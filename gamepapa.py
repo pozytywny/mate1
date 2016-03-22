@@ -5,7 +5,7 @@ from collections import namedtuple
 
 import pygame
 from pygame.locals import *
-from settings import settings
+from settings import settings, resource
 from pygame_objects import (ScoreWidget, QuizCarrousel, LEFT, RIGHT,
                             EVENTID_KILLQUIZ, EVENTID_PUSHQUIZ)
 from logging import Logger
@@ -23,7 +23,7 @@ class Game():
         self.font = settings.font
         self.screen = pygame.display.set_mode(Rect(0, 0, width, height).size)
 
-        heart_image = pygame.image.load(self.resource('heart.png')).convert_alpha()
+        heart_image = pygame.image.load(resource('heart.png')).convert_alpha()
 
         self.score_widget = ScoreWidget(self, heart_image)
         self.background = pygame.Surface(self.screen.get_rect().size).convert()
@@ -47,9 +47,6 @@ class Game():
             reader = csv.reader(file, delimiter=',')
             return [AssetsEntry(text, load_gfx(image), load_sfx(sound))
                     for [text, image, sound] in reader]
-
-    def resource(self, name):
-        return os.path.join('resources', name)
 
     def asset(self, name):
         return os.path.join('assets', name)
